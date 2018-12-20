@@ -21,7 +21,8 @@ void Robot::RobotInit() {
 
 void Robot::Autonomous() {
   Wait(3);
-  tankdrive.DriveCircle(3.14159265/2, 96, 0.25);
+  tankdrive.DriveCircle(3.14159265, 80.0, 0.35);
+  
 }
 
 void Robot::OperatorControl() {

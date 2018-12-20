@@ -17,8 +17,8 @@ void GoodPIDController::Start(){
 }
 double GoodPIDController::GetPIDCorrection(double error){
     proportional = error*coefP;
-    differential = (error-lastError)/timer.Get();
-    integral = lastError*(timer.Get()-lastTime);
+    differential = coefD*((error-lastError)/timer.Get());
+    integral = coefI*(lastError*(timer.Get()-lastTime));
     lastTime = timer.Get();
     lastError = error;
     return proportional+integral+differential;
