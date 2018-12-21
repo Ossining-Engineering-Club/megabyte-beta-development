@@ -67,7 +67,7 @@ void Tankdrive::DriveCircle(double travelAngle, double radius, double power){
     dashboard->PutNumber("right power: ", rightInitPow);
     dashboard->PutNumber("left power: ", leftInitPow);
     pidController.Start();
-    while((rightEncoder.GetDistance()+leftEncoder.GetDistance())/2 < travelAngle*radius){
+    while((abs(rightEncoder.GetDistance()+leftEncoder.GetDistance())/2) < abs(travelAngle*radius)){
         double correction;
         leftEncoderExpected = (radius-15.0)*(rightEncoder.GetDistance()/(radius+15.0));
         correction = pidController.GetPIDCorrection(leftEncoderExpected-leftEncoder.GetDistance());
